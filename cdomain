@@ -67,6 +67,18 @@ config_default(){
 	EOF
 }
 
+helpuser(){
+	cat <<-EOF
+		Usage: ./${0##*/} [options]
+	    -d    The domain you want to add/configure (required)
+	    -a    Your vultr.com API key (required)
+	    -k    The backup location for the public/private keys and pins (optional)
+	    -ip   The server's IP address (optional)
+	    -s    Skip adding the domain to vultr.com and just obtain certificates (optional)
+	EOF
+	exit 1
+}
+
 declare -ar DEPENDS=(certbot jq curl openssl nginx dig tee)
 declare domain
 declare apikey
